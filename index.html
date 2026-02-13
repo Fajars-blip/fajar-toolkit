@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Fajar Tool Kit - Solusi Peralatan Terpercaya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 20px;
+        }
+
+        .section h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin: 15px 0;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .icon {
+            font-size: 40px;
+            color: #667eea;
+        }
+
+        .about {
+            background: #f8f9fa;
+        }
+
+        .contact {
+            background: white;
+            text-align: center;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">⚙️ PT Fajar Tool Kit</div>
+            <ul class="nav-links">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#fitur">Produk</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+        <div class="hero-content">
+            <h1>Solusi Peralatan Berkualitas Tinggi</h1>
+            <p>PT Fajar Tool Kit menyediakan peralatan terpercaya untuk kebutuhan industri dan profesional Anda</p>
+            <a href="#kontak" class="btn">Hubungi Kami</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="section about">
+        <div class="container">
+            <h2>Tentang Kami</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto; font-size: 16px; color: #666;">
+                PT Fajar Tool Kit adalah perusahaan terkemuka dalam penyediaan peralatan dan tools berkualitas premium. Dengan pengalaman lebih dari satu dekade, kami berkomitmen memberikan produk terbaik dan layanan pelanggan yang excellent.
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="fitur" class="section">
+        <div class="container">
+            <h2>Keunggulan Produk Kami</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="icon">✓</div>
+                    <h3>Kualitas Premium</h3>
+                    <p>Semua produk telah melalui standar kontrol kualitas internasional yang ketat.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🛡️</div>
+                    <h3>Garansi Resmi</h3>
+                    <p>Garansi komprehensif untuk melindungi investasi Anda dengan layanan purna jual terbaik.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🚚</div>
+                    <h3>Pengiriman Cepat</h3>
+                    <p>Sistem logistik terintegrasi untuk memastikan produk sampai tepat waktu.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💰</div>
+                    <h3>Harga Kompetitif</h3>
+                    <p>Penawaran harga terbaik tanpa mengorbankan kualitas produk kami.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">👥</div>
+                    <h3>Tim Profesional</h3>
+                    <p>Tenaga ahli berpengalaman siap membantu kebutuhan teknis Anda 24/7.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🌍</div>
+                    <h3>Jangkauan Luas</h3>
+                    <p>Melayani pelanggan di seluruh Indonesia dengan jaringan distribusi yang luas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="section contact">
+        <div class="container">
+            <h2>Hubungi Kami</h2>
+            <p style="margin-bottom: 30px; color: #666; font-size: 16px;">
+                Silakan hubungi kami untuk informasi lebih lanjut atau permintaan penawaran khusus
+            </p>
+            <p style="margin: 15px 0;"><strong>📞 Telepon:</strong> +6285855814836</p>
+            <p style="margin: 15px 0;"><strong>📧 Email:</strong> info@fajarkit.com</p>
+            <p style="margin: 15px 0;"><strong>📍 Alamat:</strong> Jl. Industri No. XX, Jakarta, Indonesia</p>
+            <a href="mailto:info@fajarkit.com" class="btn" style="margin-top: 20px;">Kirim Email</a>
+        </div>
+    <section id="tentang"> ... </section>
+
+<section id="produk" style="padding: 50px; text-align: center;">
+    <h2>Produk Unggulan Kami</h2>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
+        </div>
+</section>
+<style>
+    /* Desain Grid Produk */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .product-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+        /* Tambahkan baris di bawah ini untuk animasi halus */
+        transition: all 0.3s ease-in-out; 
+        border: 1px solid #eee;
+        cursor: pointer;
+    }
+
+    /* Efek saat kursor menyentuh kotak produk */
+    .product-card:hover {
+        transform: translateY(-15px); /* Kotak naik ke atas */
+        box-shadow: 0 12px 30px rgba(0, 68, 204, 0.2); /* Bayangan lebih tebal & biru */
+        border-color: #0044cc; /* Garis pinggir berubah jadi biru */
+    }
+
+    /* Efek pada gambar saat di-hover */
+    .product-card:hover .product-image {
+        transform: scale(1.05); /* Gambar membesar sedikit */
+    }
+
+    .product-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease; /* Transisi untuk pembesaran gambar */
+    }
+
+    /* Efek pada tombol agar berubah warna dengan halus */
+    .btn-buy {
+        width: 100%;
+        padding: 10px;
+        background: #0044cc;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-buy:hover {
+        background: #002e8a;
+        transform: scale(1.02); /* Tombol membesar sedikit saat ditekan */
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover; /* Agar gambar tidak gepeng */
+    }
+
+    .product-info {
+        padding: 15px;
+    }
+
+    .product-info h3 {
+        font-size: 1.1rem;
+        margin: 10px 0;
+        color: #333;
+    }
+
+    .product-price {
+        color: #0044cc;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .btn-buy {
+        width: 100%;
+        padding: 10px;
+        background: #0044cc;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .btn-buy:hover {
+        background: #0033aa;
+    }
+</style>
+
+<section id="produk-unggulan" style="padding: 40px 0; background: #f4f4f4;">
+    <h2 style="text-align: center; margin-bottom: 30px;">Produk Unggulan</h2>
+    
+   <div class="product-grid">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=500" class="product-image" alt="Bor Listrik">
+            <div class="product-info">
+                <h3>Bor Listrik Elektrik Pro</h3>
+                <p style="color: #666; font-size: 0.9rem;">Power tools profesional tanpa kabel.</p>
+                <div class="product-price">Rp 450.000</div>
+                <button class="btn-buy">Beli Sekarang</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lzem3wzdymmg72_tn" class="product-image" alt="Set Kunci Pas">
+            <div class="product-info">
+                <h3>Set Kunci Pas Lengkap</h3>
+                <p style="color: #666; font-size: 0.9rem;">Bahan baja chrome vanadium (12 pcs).</p>
+                <div class="product-price">Rp 220.000</div>
+                <button class="btn-buy">Beli Sekarang</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=500" class="product-image" alt="Tang Kombinasi">
+            <div class="product-info">
+                <h3>Tang Kombinasi Serbaguna</h3>
+                <p style="color: #666; font-size: 0.9rem;">Gagang anti-slip, sangat kuat.</p>
+                <div class="product-price">Rp 85.000</div>
+                <button class="btn-buy">Beli Sekarang</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="kontak" class="section contact"> ... </section>
+
+<style>
+    footer {
+        background-color: #222;
+        color: white;
+        padding: 40px 20px;
+        font-family: sans-serif;
+        margin-top: 50px;
+    }
+    .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .footer-section {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 20px;
+    }
+    .footer-section h3 {
+        color: #0044cc;
+        margin-bottom: 15px;
+    }
+    .footer-section p, .footer-section a {
+        color: #bbb;
+        text-decoration: none;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+        margin-top: 20px;
+        font-size: 0.8rem;
+        color: #777;
+    }
+    .wa-link:hover {
+        color: #25d366 !important;
+    }
+</style>
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>PT Fajar Tool Kit</h3>
+            <p>Penyedia alat teknik berkualitas tinggi untuk kebutuhan industri dan rumah tangga Anda. Terpercaya sejak 2026.</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Hubungi Kami</h3>
+            <p>📍 Jl. Teknik Maju No. 123, Surabaya</p>
+            <p>📞 <a href="https://wa.me/628123456789" class="wa-link">Chat via WhatsApp: 0812-3456-789</a></p>
+            <p>✉️ Email: info@fajartoolkit.com</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Jam Operasional</h3>
+            <p>Senin - Jumat: 08.00 - 17.00</p>
+            <p>Sabtu: 08.00 - 13.00</p>
+            <p>Minggu: Tutup</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 PT Fajar Tool Kit. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>

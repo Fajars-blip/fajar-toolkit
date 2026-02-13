@@ -2,6 +2,20 @@
 <html lang="id">
 <head>
     <script>
+    // Ini kode "Satpam" yang sudah kamu pasang sebelumnya
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+        window.location.href = 'Login.html';
+    }
+
+    // TAMBAHKAN FUNGSI INI SEKARANG
+    function logout() {
+        // Menghapus tanda login
+        localStorage.removeItem('isLoggedIn');
+        // Kembali ke halaman Login
+        window.location.href = 'Login.html';
+    }
+</script>
+    <script>
     // Jika tidak ada status login, lempar balik ke halaman login
     if (localStorage.getItem('isLoggedIn') !== 'true') {
         window.location.href = 'Login.html';
@@ -496,3 +510,4 @@
 </body>
 
 </html>
+

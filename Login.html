@@ -190,22 +190,26 @@ body{
         const u = document.getElementById('username').value.trim();
         const p = document.getElementById('password').value;
 
-        // Cek kecocokan data
-        if(u === 'ahfasi' && p === 'ahfasi04'){
-            alert('Login berhasil. Selamat datang ' + u + '!');
-            
-            // SIMPAN STATUS LOGIN DISINI
-            localStorage.setItem('isLoggedIn', 'true');
-            
-            // Redirect ke halaman utama
-            window.location.href = 'index.html';
-        } else {
-            alert('Login gagal. Username atau password salah.');
-        }
+        // 1. Ambil data akun yang tersimpan di browser
+const storedUser = JSON.parse(localStorage.getItem('userAccount'));
+
+// 2. Cek apakah ada data dan apakah input cocok dengan data tersebut
+if (storedUser && u === storedUser.email && p === storedUser.password) {
+    alert('Login berhasil. Selamat datang ' + storedUser.nama + '!');
+    
+    // Simpan status login
+    localStorage.setItem('isLoggedIn', 'true');
+
+    // Redirect ke halaman utama
+    window.location.href = 'index.html';
+} else {
+    alert('Login gagal. Email atau password salah, atau akun belum terdaftar.');
+}
     });
 })();
 
 </script>
+
 
 
 

@@ -106,7 +106,7 @@
         <h1>Daftar Akun</h1>
         <p class="subtitle">Silakan lengkapi data untuk mendaftar</p>
         
-        <form id="registerForm">
+      <form id="registerForm" onsubmit="return false;">
             <div class="form-group">
                 <label for="name">Nama Lengkap</label>
                 <input type="text" id="nama" name="nama" required>
@@ -169,6 +169,7 @@ registerForm.addEventListener('submit', function(e) {
 </script>
 
 </html>
+
 
 
 

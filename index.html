@@ -2,6 +2,22 @@
 <html lang="id">
 <head>
     <script>
+    // 1. Fungsi Satpam (Proteksi Halaman)
+    // Langsung cek saat halaman dibuka
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+        alert("Akses ditolak! Silakan login terlebih dahulu.");
+        window.location.href = "Login.html";
+    }
+
+    // 2. Fungsi Logout (Dipanggil saat tombol logout diklik)
+    function logout() {
+        if (confirm("Apakah anda yakin ingin keluar?")) {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'Login.html';
+        }
+    }
+</script>
+    <script>
     // Ini kode "Satpam" yang sudah kamu pasang sebelumnya
     if (localStorage.getItem('isLoggedIn') !== 'true') {
         window.location.href = 'Login.html';
@@ -522,6 +538,7 @@
 </body>
 
 </html>
+
 
 
 

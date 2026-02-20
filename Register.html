@@ -109,7 +109,7 @@
         <form id="registerForm">
             <div class="form-group">
                 <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="nama" name="nama" required>
             </div>
             
             <div class="form-group">
@@ -124,7 +124,7 @@
             
             <div class="form-group">
                 <label for="confirm">Konfirmasi Password</label>
-                <input type="password" id="confirm" name="confirm" required>
+               <input type="password" id="confirmPassword" name="confirm" required>
             </div>
             
             <button type="submit">Daftar</button>
@@ -137,43 +137,38 @@
     
     <script>
     const registerForm = document.getElementById('registerForm');
-    
-    registerForm.addEventListener('submit', function(e) {
-        // Ambil data input berdasarkan urutannya atau class-nya
-        const inputs = document.querySelectorAll('input');
-        const password = inputs[2].value; // Input ke-3 (Password)
-        const confirm = inputs[3].value;  // Input ke-4 (Konfirmasi)
 
-        if (password !== confirm) {
-            alert("Password dan Konfirmasi Password tidak cocok!");
-            e.preventDefault(); // Batalkan pengiriman form
-        // ... kode validasi password kamu di atas ...
-} else {
-    // 1. Ambil semua data input
-    const inputs = document.querySelectorAll('input');
-    const namaLengkap = inputs[0].value;
-    const email = inputs[1].value;
-    const password = inputs[2].value;
+registerForm.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-    // 2. Buat objek user
-    const userAccount = {
-        nama: namaLengkap,
-        email: email,
-        password: password
-    };
+    // 1. Ambil elemen input secara manual
+    const nama = document.getElementById('nama').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirm = document.getElementById('confirmPassword').value;
+
+    // 2. Validasi sederhana
+    if (!nama || !email || !password) {
+        alert("Semua kolom harus diisi!");
+        return;
+    }
+
+    if (password !== confirm) {
+        alert("Password tidak cocok!");
+        return;
+    }
 
     // 3. Simpan ke Local Storage
+    const userAccount = { nama, email, password };
     localStorage.setItem('userAccount', JSON.stringify(userAccount));
 
-    alert("Pendaftaran berhasil! Data tersimpan di browser.");
-    
-    // 4. Pindah ke halaman login
+    // 4. Notifikasi
+    alert("Pendaftaran berhasil!");
     window.location.href = "Login.html";
-} 
-        }
-    });
+});
 </script>
 
 </html>
+
 
 

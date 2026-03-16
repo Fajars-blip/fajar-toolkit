@@ -181,35 +181,38 @@ body{
     transform: scale(1.02);
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-(function(){
-    const form = document.querySelector('form');
-    form.addEventListener('submit', function(e){
-        e.preventDefault();
+  // 1. Inisialisasi Supabase
+  const SUPABASE_URL = 'https://jmiyovocrlemxjvxpzde.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImptaXlvdm9jcmxlbXhqdnhwemRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyNjE2MzYsImV4cCI6MjA4NzgzNzYzNn0.ef_TkY4Rc_TK4ZFjeeRsQejjNbhYZieX17xt65mjluI'; // Pastikan ini sudah diisi key panjang tadi
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        const u = document.getElementById('username').value.trim();
-        const p = document.getElementById('password').value;
+  // 2. Ambil elemen form
+  const loginForm = document.querySelector('form');
 
-        // 1. Ambil data akun yang tersimpan di browser
-const storedUser = JSON.parse(localStorage.getItem('userAccount'));
+  // 3. Logika Login
+  if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const emailInput = document.querySelector('input[type="email"]').value;
+      const passwordInput = document.querySelector('input[type="password"]').value;
 
-// 2. Cek apakah ada data dan apakah input cocok dengan data tersebut
-if (storedUser && u === storedUser.email && p === storedUser.password) {
-    alert('Login berhasil. Selamat datang ' + storedUser.nama + '!');
-    
-    // Simpan status login
-    localStorage.setItem('isLoggedIn', 'true');
+      const { data, error } = await supabase
+        .from('users')
+        .select('*')
+        .eq('email', emailInput)
+        .eq('password', passwordInput)
+        .single();
 
-    // Redirect ke halaman utama
-    window.location.href = 'index.html';
-} else {
-    alert('Login gagal. Email atau password salah, atau akun belum terdaftar.');
-}
+      if (data) {
+        alert("Login Berhasil! Selamat datang " + data.nama_lengkap);
+        localStorage.setItem('isLoggedIn', 'true');
+        window.location.href = "index.html"; 
+      } else {
+        alert("Email atau Password salah!");
+      }
     });
-})();
-
+  }
 </script>
-
-
-
-

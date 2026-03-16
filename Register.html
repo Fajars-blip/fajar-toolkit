@@ -139,17 +139,22 @@
 <script>
   const SUPABASE_URL = 'https://jmiyovocrlemxjvxpzde.supabase.co'; // ID Proyek Anda
   const SUPABASE_KEY = 'PASTE_ANON_KEY_ANDA_DI_SINI'; // Key dari menu API
-  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  const registerForm = document.querySelector('form');
+  const registerForm = document.querySelector('#registerForm');
 
   registerForm.addEventListener('submit', async (e) => {
     e.preventDefault(); // Agar halaman tidak refresh
 
-    const inputs = registerForm.querySelectorAll('input');
-    const nama = inputs[0].value;
-    const email = inputs[1].value;
-    const password = inputs[2].value;
+    const nama = document.getElementById('nama').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+      alert('Password dan konfirmasi password tidak cocok.');
+      return;
+    }
 
     // Proses simpan ke tabel 'users'
     const { data, error } = await supabase
@@ -157,10 +162,10 @@
       .insert([{ nama_lengkap: nama, email: email, password: password }]);
 
     if (error) {
-      alert("Gagal daftar: " + error.message);
+      alert('Gagal daftar: ' + error.message);
     } else {
-      alert("Pendaftaran Berhasil tersimpan di Database!");
-      window.location.href = "Login.html";
+      alert('Pendaftaran berhasil!');
+      window.location.href = 'Login.html';
     }
   });
 </script>

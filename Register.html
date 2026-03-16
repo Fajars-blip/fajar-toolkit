@@ -135,37 +135,35 @@
         </div>
     </div>
     
-   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  // 1. Konfigurasi (Isi titik-titik dengan data dari Supabase Anda)
-  const SUPABASE_URL = 'https://jmiyovocrlemxjvxpzde.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImptaXlvdm9jcmxlbXhqdnhwemRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyNjE2MzYsImV4cCI6MjA4NzgzNzYzNn0.ef_TkY4Rc_TK4ZFjeeRsQejjNbhYZieX17xt65mjluI';
+  const SUPABASE_URL = 'https://jmiyovocrlemxjvxpzde.supabase.co'; // ID Proyek Anda
+  const SUPABASE_KEY = 'PASTE_ANON_KEY_ANDA_DI_SINI'; // Key dari menu API
   const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // 2. Ambil elemen form (pastikan tag <form> Anda punya id="registerForm")
   const registerForm = document.querySelector('form');
 
   registerForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Agar halaman tidak refresh
 
-    // Ambil data dari input (sesuaikan dengan urutan input di form Anda)
     const inputs = registerForm.querySelectorAll('input');
     const nama = inputs[0].value;
     const email = inputs[1].value;
     const password = inputs[2].value;
 
-    // 3. Simpan ke Supabase
+    // Proses simpan ke tabel 'users'
     const { data, error } = await supabase
       .from('users')
-      .insert([
-        { nama_lengkap: nama, email: email, password: password }
-      ]);
+      .insert([{ nama_lengkap: nama, email: email, password: password }]);
 
     if (error) {
       alert("Gagal daftar: " + error.message);
     } else {
-      alert("Pendaftaran berhasil tersimpan di database!");
+      alert("Pendaftaran Berhasil tersimpan di Database!");
       window.location.href = "Login.html";
     }
   });
 </script>
+</body>
+
+</html>

@@ -139,7 +139,7 @@
 <script>
   const SUPABASE_URL = 'https://jmiyovocrlemxjvxpzde.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImptaXlvdm9jcmxlbXhqdnhwemRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyNjE2MzYsImV4cCI6MjA4NzgzNzYzNn0.ef_TkY4Rc_TK4ZFjeeRsQejjNbhYZieX17xt65mjluI';
-  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
   const registerForm = document.querySelector('#registerForm');
   const notification = document.createElement('div');
@@ -159,31 +159,56 @@
     notification.style.color = isError ? '#842029' : '#0f5132';
   };
 
+  const validateForm = (nama, email, password, confirmPassword) => {
+    if (!nama || !email || !password || !confirmPassword) {
+      showNotification('Semua field harus diisi.', true);
+      return false;
+    }
+    if (password.length < 6) {
+      showNotification('Password minimal 6 karakter.', true);
+      return false;
+    }
+    if (password !== confirmPassword) {
+      showNotification('Password dan konfirmasi password tidak cocok.', true);
+      return false;
+    }
+    return true;
+  };
+
   registerForm.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Agar halaman tidak refresh
+    e.preventDefault();
 
     const nama = document.getElementById('nama').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
 
-    if (password !== confirmPassword) {
-      showNotification('Password dan konfirmasi password tidak cocok.', true);
+    if (!validateForm(nama, email, password, confirmPassword)) {
       return;
     }
 
-    // Proses simpan ke tabel 'users'
-    const { data, error } = await supabase
-      .from('users')
-      .insert([{ nama_lengkap: nama, email: email, password: password }]);
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sedang mendaftar...';
 
-    if (error) {
-      showNotification('Gagal daftar: ' + error.message, true);
-    } else {
-      showNotification('Pendaftaran berhasil! Mengalihkan ke halaman login...', false);
-      setTimeout(() => {
-        window.location.href = 'Login.html';
-      }, 2000);
+    try {
+      const { data, error } = await supabase
+        .from('users')
+        .insert([{ nama_lengkap: nama, email: email, password: password }]);
+
+      if (error) {
+        showNotification('Gagal daftar: ' + error.message, true);
+        submitButton.disabled = false;
+        submitButton.textContent = 'Daftar';
+      } else {
+        showNotification('Pendaftaran berhasil! Mengalihkan ke halaman login...', false);
+        setTimeout(() => {
+          window.location.href = 'Login.html';
+        }, 2000);
+      }
+    } catch (err) {
+      showNotification('Terjadi kesalahan: ' + err.message, true);
+      submitButton.disabled = false;
+      submitButton.textContent = 'Daftar';
     }
   });
 </script>

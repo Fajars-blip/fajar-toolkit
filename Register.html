@@ -135,41 +135,37 @@
         </div>
     </div>
     
-    <script>
-    const registerForm = document.getElementById('registerForm');
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // 1. Konfigurasi (Isi titik-titik dengan data dari Supabase Anda)
+  const SUPABASE_URL = 'https://jmiyovocrlemxjvxpzde.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImptaXlvdm9jcmxlbXhqdnhwemRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyNjE2MzYsImV4cCI6MjA4NzgzNzYzNn0.ef_TkY4Rc_TK4ZFjeeRsQejjNbhYZieX17xt65mjluI';
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-registerForm.addEventListener('submit', function(e) {
+  // 2. Ambil elemen form (pastikan tag <form> Anda punya id="registerForm")
+  const registerForm = document.querySelector('form');
+
+  registerForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // 1. Ambil elemen input secara manual
-    const nama = document.getElementById('nama').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirm = document.getElementById('confirmPassword').value;
+    // Ambil data dari input (sesuaikan dengan urutan input di form Anda)
+    const inputs = registerForm.querySelectorAll('input');
+    const nama = inputs[0].value;
+    const email = inputs[1].value;
+    const password = inputs[2].value;
 
-    // 2. Validasi sederhana
-    if (!nama || !email || !password) {
-        alert("Semua kolom harus diisi!");
-        return;
+    // 3. Simpan ke Supabase
+    const { data, error } = await supabase
+      .from('users')
+      .insert([
+        { nama_lengkap: nama, email: email, password: password }
+      ]);
+
+    if (error) {
+      alert("Gagal daftar: " + error.message);
+    } else {
+      alert("Pendaftaran berhasil tersimpan di database!");
+      window.location.href = "Login.html";
     }
-
-    if (password !== confirm) {
-        alert("Password tidak cocok!");
-        return;
-    }
-
-    // 3. Simpan ke Local Storage
-    const userAccount = { nama, email, password };
-    localStorage.setItem('userAccount', JSON.stringify(userAccount));
-
-    // 4. Notifikasi
-    alert("Pendaftaran berhasil!");
-    window.location.href = "Login.html";
-});
+  });
 </script>
-
-</html>
-
-
-
-

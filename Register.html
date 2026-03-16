@@ -159,6 +159,7 @@
     notification.style.color = isError ? '#842029' : '#0f5132';
   };
 
+// 1. Fungsi Validasi (Berdiri sendiri)
 const validateForm = (nama, email, password, confirmPassword) => {
     if (!nama || !email || !password) {
         showNotification('Semua data harus diisi!', true);
@@ -175,44 +176,36 @@ const validateForm = (nama, email, password, confirmPassword) => {
     return true;
 };
 
-// Setelah ini, baru masuk ke registerForm.addEventListener (baris 195)
-  registerForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+// 2. Event Listener untuk Form
+registerForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Menahan refresh halaman
 
     const nama = document.getElementById('nama').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
 
+    // Jalankan validasi
     if (!validateForm(nama, email, password, confirmPassword)) {
-      return;
+        return; 
     }
-
-    submitButton.disabled = true;
-    submitButton.textContent = 'Sedang mendaftar...';
 
     try {
-      const { data, error } = await supabaseClient
-        .from('users')
-        .insert([{ nama_lengkap: nama, email: email, password: password }]);
+        // Gunakan nama variabel yang unik agar tidak bentrok (supabaseClient)
+        const { data, error } = await supabaseClient
+            .from('users')
+            .insert([{ nama_lengkap: nama, email: email, password: password }]);
 
-      if (error) {
-        showNotification('Gagal daftar: ' + error.message, true);
-        submitButton.disabled = false;
-        submitButton.textContent = 'Daftar';
-      } else {
-        showNotification('Pendaftaran berhasil! Mengalihkan ke halaman login...', false);
-        setTimeout(() => {
-          window.location.href = 'Login.html';
-        }, 2000);
-      }
+        if (error) {
+            showNotification('Gagal daftar: ' + error.message, true);
+        } else {
+            showNotification('Pendaftaran berhasil! Mengalihkan...', false);
+            setTimeout(() => {
+                window.location.href = 'Login.html';
+            }, 2000);
+        }
     } catch (err) {
-      showNotification('Terjadi kesalahan: ' + err.message, true);
-      submitButton.disabled = false;
-      submitButton.textContent = 'Daftar';
+        console.error(err);
+        showNotification('Terjadi kesalahan koneksi.', true);
     }
-  });
-</script>
-</body>
-
-</html>
+});

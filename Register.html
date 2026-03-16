@@ -139,7 +139,7 @@
 <script>
   const SUPABASE_URL = 'https://jmiyovocrlemxjvxpzde.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImptaXlvdm9jcmxlbXhqdnhwemRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyNjE2MzYsImV4cCI6MjA4NzgzNzYzNn0.ef_TkY4Rc_TK4ZFjeeRsQejjNbhYZieX17xt65mjluI';
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
   const registerForm = document.querySelector('#registerForm');
   const notification = document.createElement('div');
@@ -191,7 +191,7 @@
     submitButton.textContent = 'Sedang mendaftar...';
 
     try {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseClient
         .from('users')
         .insert([{ nama_lengkap: nama, email: email, password: password }]);
 

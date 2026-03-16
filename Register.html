@@ -138,10 +138,26 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const SUPABASE_URL = 'https://jmiyovocrlemxjvxpzde.supabase.co'; // ID Proyek Anda
-  const SUPABASE_KEY = 'PASTE_ANON_KEY_ANDA_DI_SINI'; // Key dari menu API
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImptaXlvdm9jcmxlbXhqdnhwemRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyNjE2MzYsImV4cCI6MjA4NzgzNzYzNn0.ef_TkY4Rc_TK4ZFjeeRsQejjNbhYZieX17xt65mjluI'; // Key dari menu API
   const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
   const registerForm = document.querySelector('#registerForm');
+  const notification = document.createElement('div');
+  notification.id = 'notification';
+  notification.style.display = 'none';
+  notification.style.padding = '12px';
+  notification.style.borderRadius = '5px';
+  notification.style.marginBottom = '20px';
+  notification.style.textAlign = 'center';
+  notification.style.fontWeight = 'bold';
+  registerForm.prepend(notification);
+
+  const showNotification = (message, isError = false) => {
+    notification.textContent = message;
+    notification.style.display = 'block';
+    notification.style.background = isError ? '#f8d7da' : '#d4edda';
+    notification.style.color = isError ? '#842029' : '#0f5132';
+  };
 
   registerForm.addEventListener('submit', async (e) => {
     e.preventDefault(); // Agar halaman tidak refresh
@@ -152,7 +168,7 @@
     const confirmPassword = document.getElementById('confirmPassword').value;
 
     if (password !== confirmPassword) {
-      alert('Password dan konfirmasi password tidak cocok.');
+      showNotification('Password dan konfirmasi password tidak cocok.', true);
       return;
     }
 
@@ -162,10 +178,12 @@
       .insert([{ nama_lengkap: nama, email: email, password: password }]);
 
     if (error) {
-      alert('Gagal daftar: ' + error.message);
+      showNotification('Gagal daftar: ' + error.message, true);
     } else {
-      alert('Pendaftaran berhasil!');
-      window.location.href = 'Login.html';
+      showNotification('Pendaftaran berhasil! Mengalihkan ke halaman login...', false);
+      setTimeout(() => {
+        window.location.href = 'Login.html';
+      }, 2000);
     }
   });
 </script>

@@ -159,39 +159,23 @@
     notification.style.color = isError ? '#842029' : '#0f5132';
   };
 
-  const validateForm = (nama, email, password, confirmPassword) => {
-    const validateForm = (nama, email, password, confirmPassword) => {
-    // Hapus return false yang ada di sini tadi
-    
+const validateForm = (nama, email, password, confirmPassword) => {
     if (!nama || !email || !password) {
-        showNotification('Semua field harus diisi.', true);
+        showNotification('Semua data harus diisi!', true);
         return false;
     }
-    
     if (password.length < 6) {
         showNotification('Password minimal 6 karakter.', true);
         return false;
     }
-    
     if (password !== confirmPassword) {
         showNotification('Password dan konfirmasi password tidak cocok.', true);
         return false;
     }
-    
-    return true;perbaikan button daftar
-};
-    }
-    if (password.length < 6) {
-      showNotification('Password minimal 6 karakter.', true);
-      return false;
-    }
-    if (password !== confirmPassword) {
-      showNotification('Password dan konfirmasi password tidak cocok.', true);
-      return false;
-    }
     return true;
-  };
+};
 
+// Setelah ini, baru masuk ke registerForm.addEventListener (baris 195)
   registerForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 

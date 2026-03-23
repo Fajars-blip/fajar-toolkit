@@ -186,7 +186,8 @@ body{
   // 1. Konfigurasi (Pastikan URL ada)
 const SUPABASE_URL = 'https://jmiyovocrlemxjvxpzde.supabase.co'; 
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImptaXlvdm9jcmxlbXhqdnhwemRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyNjE2MzYsImV4cCI6MjA4NzgzNzYzNn0.ef_TkY4Rc_TK4ZFjeeRsQejjNbhYZieX17xt65mjluI'; // Pakai yang lengkap
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const { createClient } = supabase;
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
   // 2. Ambil elemen form
   const loginForm = document.querySelector('form');
 
@@ -197,8 +198,7 @@ const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
       
       const emailInput = document.querySelector('input[type="email"]').value;
       const passwordInput = document.querySelector('input[type="password"]').value;
-
-      const { data, error } = await supabase
+      const { data, error } = await supabaseClient
         .from('users')
         .select('*')
         .eq('email', emailInput)

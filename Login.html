@@ -198,20 +198,20 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
       
       const emailInput = document.querySelector('input[type="email"]').value;
     const passwordInput = document.getElementById('password').value;
-      const { data, error } = await supabaseClient
-        .from('users')
-        .select('*')
-        .eq('email', emailInput)
-        .eq('password', passwordInput)
-        .single();
+        const { data, error } = await supabaseClient
+          .from('email')
+          .select('*')
+          .eq('email', emailInput)
+          .eq('password', passwordInput)
+          .single();
 
-      if (data) {
-        alert("Login Berhasil! Selamat datang " + data.nama_lengkap);
-        localStorage.setItem('isLoggedIn', 'true');
-        window.location.href = "index.html"; 
-      } else {
-        alert("Email atau Password salah!");
-      }
+        if (data) {
+          alert("Login Berhasil! Selamat datang " + data.nama_lengkap);
+          localStorage.setItem('isLoggedIn', 'true');
+          window.location.href = "index.html"; 
+        } else {
+          alert("Email atau Password salah!");
+        }
     });
   }
 </script>

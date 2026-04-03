@@ -197,7 +197,7 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
       e.preventDefault();
       
       const emailInput = document.querySelector('input[type="email"]').value;
-      const passwordInput = document.querySelector('input[type="password"]').value;
+    const passwordInput = document.getElementById('password').value;
       const { data, error } = await supabaseClient
         .from('users')
         .select('*')
